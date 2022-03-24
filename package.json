@@ -1,6 +1,6 @@
 {
   "name": "@kubevious/data-models",
-  "version": "1.0.139",
+  "version": "1.0.1",
   "description": "Kubevious Data Models",
   "main": "dist/index.js",
   "types": "dist",
@@ -49,6 +49,7 @@
   "resolutions": {
     "the-lodash": "^2.0.9",
     "the-logger": "^2.0.14",
-    "the-promise": "^2.0.13"
+    "the-promise": "^2.0.13",
+    "@kubevious/easy-data-store": "^1.0.10"
   }
 }

@@ -27,7 +27,7 @@ export interface ConfigAccessors
     Config: DataStoreTableAccessor<ConfigRow>,
 }
 
-export function prepareRuleEngine(dataStore : DataStore) : ConfigAccessors
+export function prepareConfig(dataStore : DataStore) : ConfigAccessors
 {
     return {
         Config: ConfigMeta.prepare(dataStore),

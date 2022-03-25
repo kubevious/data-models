@@ -62,6 +62,7 @@ steps:
     commands:
       - pwd
       - ls -la
+      - export MYSQL_DB=kubevious
       - npm test
 
   publish:

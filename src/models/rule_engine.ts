@@ -11,7 +11,6 @@ export interface RulesRow
     target: string,
     script: string,
     enabled: boolean,
-    applicator: any,
     hash: Buffer
 }
 export const RulesMeta = BuildTableMeta<RulesRow>("rules", meta => {
@@ -22,7 +21,6 @@ export const RulesMeta = BuildTableMeta<RulesRow>("rules", meta => {
         .field('script')
         .field('enabled')
             .from(x => (x === 1))
-        .field('applicator')
         .field('hash')
         ;
 })
@@ -103,7 +101,7 @@ export const RuleLogsMeta = BuildTableMeta<RuleLogsRow>("rule_logs", meta => {
 /*
  *
  */
-export interface RuleClusterStatusRow
+export interface RuleStatusRow
 {
     rule_name: string,
     date: Date,
@@ -111,7 +109,7 @@ export interface RuleClusterStatusRow
     error_count: number,
     item_count: number
 }
-export const RuleClusterStatusMeta = BuildTableMeta<RuleClusterStatusRow>("rule_statuses", meta => {
+export const RuleStatusMeta = BuildTableMeta<RuleStatusRow>("rule_statuses", meta => {
     meta
         .driverParams({ database: DB_NAME })
         .key('rule_name')
@@ -156,7 +154,7 @@ export interface RuleEngineAccessors
     RuleLogs: DataStoreTableAccessor<RuleLogsRow>,
     MarkerItems: DataStoreTableAccessor<MarkerItemsRow>,
     
-    RuleClusterStatuses: DataStoreTableAccessor<RuleClusterStatusRow>
+    RuleStatuses: DataStoreTableAccessor<RuleStatusRow>
 }
 
 export function prepareRuleEngine(dataStore : DataStore) : RuleEngineAccessors
@@ -169,6 +167,6 @@ export function prepareRuleEngine(dataStore : DataStore) : RuleEngineAccessors
         RuleLogs: RuleLogsMeta.prepare(dataStore),
         MarkerItems: MarkerItemsMeta.prepare(dataStore),
 
-        RuleClusterStatuses: RuleClusterStatusMeta.prepare(dataStore),
+        RuleStatuses: RuleStatusMeta.prepare(dataStore),
     }
 }

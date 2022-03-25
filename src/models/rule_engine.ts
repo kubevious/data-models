@@ -1,6 +1,6 @@
 import { DataStore, BuildTableMeta, DataStoreTableAccessor } from '@kubevious/easy-data-store';
 
-const DB_NAME = 'kubevious';
+const DB_NAME = process.env.MYSQL_DB;
 
 /*
  *
@@ -106,14 +106,16 @@ export const RuleLogsMeta = BuildTableMeta<RuleLogsRow>("rule_logs", meta => {
 export interface RuleClusterStatusRow
 {
     rule_name: string,
+    date: Date,
     hash: Buffer,
     error_count: number,
     item_count: number
 }
-export const RuleClusterStatusMeta = BuildTableMeta<RuleClusterStatusRow>("rule_cluster_statuses", meta => {
+export const RuleClusterStatusMeta = BuildTableMeta<RuleClusterStatusRow>("rule_statuses", meta => {
     meta
         .driverParams({ database: DB_NAME })
         .key('rule_name')
+        .field('date')
         .field('hash')
         .field('error_count')
         .field('item_count')

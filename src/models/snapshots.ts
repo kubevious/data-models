@@ -1,7 +1,6 @@
 import { DataStore, BuildTableMeta, DataStoreTableAccessor } from '@kubevious/easy-data-store';
 
-const DB_NAME = 'kubevious';
-
+const DB_NAME = process.env.MYSQL_DB;
 
 export interface SnapshotsRow
 {

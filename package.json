@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/kubevious/data-models#readme",
   "dependencies": {
-    "@kubevious/easy-data-store": "^1.0.10",
+    "@kubevious/easy-data-store": "^1.0.11",
     "the-lodash": "^2.0.9",
     "the-logger": "^2.0.14",
     "the-promise": "^2.0.13",
@@ -50,6 +50,6 @@
     "the-lodash": "^2.0.9",
     "the-logger": "^2.0.14",
     "the-promise": "^2.0.13",
-    "@kubevious/easy-data-store": "^1.0.10"
+    "@kubevious/easy-data-store": "^1.0.11"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@kubevious/data-models",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Kubevious Data Models",
   "main": "dist/index.js",
   "types": "dist",

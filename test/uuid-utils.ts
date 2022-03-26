@@ -5,7 +5,7 @@ import { setupLogger, LoggerOptions } from 'the-logger';
 const loggerOptions = new LoggerOptions().enableFile(false).pretty(true);
 const logger = setupLogger('test', loggerOptions);
 
-import * as UuidUtils from '../src/utils/uuid-utils'
+import { UuidUtils } from '../src'
 
 describe('uuid-utils', () => {
 

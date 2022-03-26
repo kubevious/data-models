@@ -1,10 +1,13 @@
 import _ from 'the-lodash';
 
-export function toMySQLDate(date : Date | null) : string | null
+export class DateUtils
 {
-    if (!date) {
-        return null;
+    static toMySQLDate(date : Date | null) : string | null
+    {
+        if (!date) {
+            return null;
+        }
+        const str = date.toISOString().substring(0, 10);
+        return str;
     }
-    const str = date.toISOString().substring(0, 10);
-    return str;
 }

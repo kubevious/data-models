@@ -3,21 +3,25 @@ import _ from 'the-lodash';
 // import * as crypto from "crypto";
 const crypto = require('crypto');
 
-export function calculateObjectHash(obj : any) : Buffer
+export class HashUtils
 {
-    if (_.isNullOrUndefined(obj)) {
-        throw new Error('NO Object');
+    static calculateObjectHash(obj : any) : Buffer
+    {
+        if (_.isNullOrUndefined(obj)) {
+            throw new Error('NO Object');
+        }
+
+        const str = _.stableStringify(obj);
+
+        const sha256 = crypto.createHash('sha256');
+        sha256.update(str);
+        const value = <Buffer> sha256.digest();
+        return value;
     }
 
-    const str = _.stableStringify(obj);
+    static calculateObjectHashStr(obj : any) : string
+    {
+        return HashUtils.calculateObjectHash(obj).toString('hex');
+    }
 
-    const sha256 = crypto.createHash('sha256');
-    sha256.update(str);
-    const value = <Buffer> sha256.digest();
-    return value;
-}
-
-export function calculateObjectHashStr(obj : any) : string
-{
-    return calculateObjectHash(obj).toString('hex');
 }

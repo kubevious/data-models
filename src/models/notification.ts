@@ -14,7 +14,7 @@ export interface NotificationSnoozeRow
 export const NotificationSnoozeMeta = BuildTableMeta<NotificationSnoozeRow>("notification_snooze", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('key')
+        .key('kind')
         .key('feedback')
         .field('snooze')
         ;

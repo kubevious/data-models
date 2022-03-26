@@ -29,7 +29,8 @@
     "the-lodash": "^2.0.9",
     "the-logger": "^2.0.14",
     "the-promise": "^2.0.13",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",

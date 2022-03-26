@@ -11,7 +11,8 @@ export interface RulesRow
     target: string,
     script: string,
     enabled: boolean,
-    hash: Buffer
+    hash: Buffer,
+    date: Date,
 }
 export const RulesMeta = BuildTableMeta<RulesRow>("rules", meta => {
     meta
@@ -22,6 +23,7 @@ export const RulesMeta = BuildTableMeta<RulesRow>("rules", meta => {
         .field('enabled')
             .from(x => (x === 1))
         .field('hash')
+        .field('date')
         ;
 })
 

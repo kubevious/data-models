@@ -5,6 +5,8 @@ REPO_DEPENDENCIES=(
     "the-logger"
     "the-promise"
     "@kubevious/easy-data-store"
+    "@kubevious/ui-middleware"
+    "@kubevious/helper-backend"
 )
 
 FORCE_RESOLVE_DEPENDENCIES=(
@@ -12,4 +14,6 @@ FORCE_RESOLVE_DEPENDENCIES=(
     "the-logger"
     "the-promise"
     "@kubevious/easy-data-store"
+    "@kubevious/ui-middleware"
+    "@kubevious/helper-backend"
 )

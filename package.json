@@ -26,11 +26,13 @@
   "homepage": "https://github.com/kubevious/data-models#readme",
   "dependencies": {
     "@kubevious/easy-data-store": "^1.0.11",
+    "@kubevious/helper-backend": "^1.0.38",
+    "@kubevious/ui-middleware": "^1.0.43",
+    "moment": "^2.29.1",
     "the-lodash": "^2.0.9",
     "the-logger": "^2.0.14",
     "the-promise": "^2.0.13",
-    "uuid": "^8.3.2",
-    "moment": "^2.29.1"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/mocha": "^8.0.3",

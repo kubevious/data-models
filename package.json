@@ -52,6 +52,8 @@
     "the-lodash": "^2.0.9",
     "the-logger": "^2.0.14",
     "the-promise": "^2.0.13",
-    "@kubevious/easy-data-store": "^1.0.11"
+    "@kubevious/easy-data-store": "^1.0.11",
+    "@kubevious/ui-middleware": "^1.0.43",
+    "@kubevious/helper-backend": "^1.0.38"
   }
 }

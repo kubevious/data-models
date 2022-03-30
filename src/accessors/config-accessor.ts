@@ -12,18 +12,19 @@ export class ConfigAccessor
         this._config = config;
     }
 
-    setLatestSnapshotId(snapshotId: string)
+    setLatestSnapshotInfo(info: LatestSnapshotInfo)
     {
-        const valueObj : LatestSnapshotIdConfig = {
-            snapshot_id: snapshotId
-        };
+        return this.setConfig(LATEST_SNAPSHOT_CONFIG_KEY, info);
+    }
 
-        return this.setConfig(LATEST_SNAPSHOT_CONFIG_KEY, valueObj);
+    getLatestSnapshotInfo()
+    {
+        return this.getConfig<LatestSnapshotInfo | null>(LATEST_SNAPSHOT_CONFIG_KEY, null);
     }
 
     getLatestSnapshotId()
     {
-        return this.getConfig<LatestSnapshotIdConfig | null>(LATEST_SNAPSHOT_CONFIG_KEY, null)
+        return this.getLatestSnapshotInfo()
             .then(result => {
                 return result?.snapshot_id ?? null;
             })
@@ -37,13 +38,24 @@ export class ConfigAccessor
 
         return this.setConfig(DB_SCHEMA_CONFIG_KEY, valueObj);
     }
-
     getDBSchemaVersion()
     {
         return this.getConfig<DBVersionConfig | null>(DB_SCHEMA_CONFIG_KEY, null)
             .then(result => {
                 return result?.version ?? 0;
             })
+    }
+
+    setCollectorStateConfig(info: CollectorStateInfo)
+    {
+        return this.setConfig(COLLECTOR_STATE_CONFIG_KEY, info);
+    }
+
+    getCollectorStateConfig()
+    {
+        return this.getConfig<CollectorStateInfo>(COLLECTOR_STATE_CONFIG_KEY, {
+            snapshots_in_queue: 0
+        })
     }
 
     /** ** **/
@@ -73,6 +85,13 @@ export interface DBVersionConfig  {
 }
 
 export const LATEST_SNAPSHOT_CONFIG_KEY = 'LATEST_SNAPSHOT';
-export interface LatestSnapshotIdConfig  {
+export interface LatestSnapshotInfo  {
     snapshot_id: string;
+    date: string;
+    agent_version: string;
+}
+
+export const COLLECTOR_STATE_CONFIG_KEY = 'COLLECTOR_STATE';
+export interface CollectorStateInfo  {
+    snapshots_in_queue: number;
 }

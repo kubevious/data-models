@@ -83,10 +83,10 @@ export class NodeHistoryReader
 
     private _processNextNodePartition() : Promise<void>
     {
-        this._logger.info("[_processNextNodePartition] _currentPartId: %s", this._currentPartId);
+        this._logger.debug("[_processNextNodePartition] _currentPartId: %s", this._currentPartId);
 
         if (this._limiter.shouldStop()) {
-            this._logger.info("[_processNextNodePartition] limiter says stop.");
+            this._logger.warn("[_processNextNodePartition] limiter says stop.");
             this._nextTokenData = {
                 part: this._currentPartId
             }

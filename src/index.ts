@@ -8,3 +8,5 @@ export { HashUtils } from './utils/hash-utils';
 export { PartitionUtils } from './utils/partition-utils';
 export { UuidUtils } from './utils/uuid-utils';
 export { PaginationUtils } from './utils/pagination-utils';
+
+export { SeriesResampler } from './time-series/series-resampler';

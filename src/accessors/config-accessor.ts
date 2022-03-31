@@ -30,6 +30,16 @@ export class ConfigAccessor
             })
     }
 
+    setCollectorReportingInfo(info: CollectorReportingInfo)
+    {
+        return this.setConfig(COLLECTOR_REPORTING_INFO_CONFIG_KEY, info);
+    }
+
+    getCollectorReportingInfo()
+    {
+        return this.getConfig<CollectorReportingInfo | null>(COLLECTOR_REPORTING_INFO_CONFIG_KEY, null);
+    }
+
     setDBSchemaVersion(version: number)
     {
         const valueObj : DBVersionConfig = {
@@ -86,6 +96,13 @@ export interface DBVersionConfig  {
 
 export const LATEST_SNAPSHOT_CONFIG_KEY = 'LATEST_SNAPSHOT';
 export interface LatestSnapshotInfo  {
+    snapshot_id: string;
+    date: string;
+    agent_version: string;
+}
+
+export const COLLECTOR_REPORTING_INFO_CONFIG_KEY = 'COLLECTOR_REPORTING_INFO';
+export interface CollectorReportingInfo  {
     snapshot_id: string;
     date: string;
     agent_version: string;

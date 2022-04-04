@@ -19,6 +19,9 @@ export { ClusterLatestSnapshotRow } from './models/snapshots';
 
 export { prepareValidation, ValidationAccessors, ValidatorRow } from './models/validation';
 
+/** REDIS **/
+export { RedisSearchNameFetcher } from './redis/search-name-fetcher';
+
 /** ACCESSORS **/
 export { ConfigAccessor } from './accessors/config-accessor';
 export { SnapshotReader } from './accessors/snapshot-reader';

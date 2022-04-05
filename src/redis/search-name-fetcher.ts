@@ -15,4 +15,19 @@ export class RedisSearchNameFetcher
         return 'search_anno';
     }
 
+    get nodeSearchIndex()
+    {
+        return `idx.${this.nodeKeyPrefix}`;
+    }
+
+    get labelSearchIndex()
+    {
+        return `idx.${this.labelKeyPrefix}`;
+    }
+
+    get annoSearchIndex()
+    {
+        return `idx.${this.annoKeyPrefix}`;
+    }
+
 }

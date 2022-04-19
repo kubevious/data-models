@@ -30,3 +30,5 @@ export { NodeHistoryReader } from './accessors/node-history-reader';
 /** MISC **/
 export { SeriesResampler } from './time-series/series-resampler';
 
+/** REPORTING **/
+export { ApiResourceStatus, ApiResourceError } from './reporting/api-server';

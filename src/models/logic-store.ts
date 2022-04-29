@@ -14,8 +14,10 @@ export interface LogicItemDataRow
 export const LogicItemDataMeta = BuildTableMeta<LogicItemDataRow>("logic_item_data", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('dn')
-        .key('key')
+        .key('id')
+            .autogenerateable()
+        .field('dn')
+        .field('key')
         .field('value')
         ;
 })

@@ -46,6 +46,7 @@ export interface ChangePackageRow
 {
     namespace: string,
     name: string,
+    date: Date,
     summary: ChangePackageSummary,
     charts: ChangePackageChart[],
     changes: KubernetesObject[],
@@ -56,6 +57,7 @@ export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_
         .driverParams({ database: DB_NAME })
         .key('namespace')
         .key('name')
+        .field('date')
         .field('summary')
         .field('charts')
         .field('changes')
@@ -99,6 +101,7 @@ export interface ValidationStateRow
     namespace: string,
     name: string,
 
+    date: Date,
     state: ValidationState,
     success?: boolean,
 
@@ -110,6 +113,7 @@ export const ValidationStateMeta = BuildTableMeta<ValidationStateRow>("guard_val
         .driverParams({ database: DB_NAME })
         .key('namespace')
         .key('name')
+        .field('date')
         .field('state')
         .field('success')
         .field('summary')

@@ -24,9 +24,9 @@ export interface KubernetesObject {
         annotations?: Record<string, string>;
         [x: string]: any;
     };
-    spec?: object;
-    status?: object;
-    data?: object;
+    spec?: any;
+    status?: any;
+    data?: any;
     [x: string]: any;
 }
 
@@ -65,11 +65,53 @@ export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_
         ;
 })
 
+
+/*
+ *
+ */
+export interface ValidationQueueRow
+{
+    namespace: string,
+    name: string,
+    date: Date
+}
+export const ValidationQueueMeta = BuildTableMeta<ValidationQueueRow>("guard_validation_queue", meta => {
+    meta
+        .driverParams({ database: DB_NAME })
+        .key('namespace')
+        .key('name')
+        .field('date')
+        ;
+})
+
+
+/*
+ *
+ */
+export interface ValidationHistoryRow
+{
+    namespace: string,
+    name: string,
+    date: Date,
+    state: ValidationState
+}
+export const ValidationHistoryMeta = BuildTableMeta<ValidationHistoryRow>("guard_validation_history", meta => {
+    meta
+        .driverParams({ database: DB_NAME })
+        .key('namespace')
+        .key('name')
+        .field('date')
+        .field('state')
+        ;
+})
+
+
 /*
  *
  */
 export enum ValidationState {
     pending = 'pending',
+    scheduling = 'scheduling',
     running = 'running',
     completed = 'completed',
 }
@@ -128,6 +170,8 @@ export const ValidationStateMeta = BuildTableMeta<ValidationStateRow>("guard_val
 export interface GuardAccessors
 {
     ChangePackage: DataStoreTableAccessor<ChangePackageRow>
+    ValidationQueue: DataStoreTableAccessor<ValidationQueueRow>
+    ValidationHistory: DataStoreTableAccessor<ValidationHistoryRow>
     ValidationState: DataStoreTableAccessor<ValidationStateRow>
 }
 
@@ -135,6 +179,8 @@ export function prepareGuard(dataStore : DataStore) : GuardAccessors
 {
     return {
         ChangePackage: ChangePackageMeta.prepare(dataStore),
+        ValidationQueue: ValidationQueueMeta.prepare(dataStore),
+        ValidationHistory: ValidationHistoryMeta.prepare(dataStore),
         ValidationState: ValidationStateMeta.prepare(dataStore),
     }
 }

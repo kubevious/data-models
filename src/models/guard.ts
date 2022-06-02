@@ -43,11 +43,19 @@ export interface ChangePackageDeletion
 /*
  *
  */
+
+export interface ChangePackageSource
+{
+    kind: 'k8s' | 'web',
+    name: string,
+    namespace?: string
+}
+
 export interface ChangePackageRow
 {
-    namespace: string,
-    name: string,
+    id: string,
     date: Date,
+    source: ChangePackageSource,
     summary: ChangePackageSummary,
     charts: ChangePackageChart[],
     changes: KubernetesObject[],
@@ -56,9 +64,9 @@ export interface ChangePackageRow
 export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_packages", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('namespace')
-        .key('name')
+        .key('id')
         .field('date')
+        .field('source')
         .field('summary')
         .field('charts')
         .field('changes')
@@ -72,15 +80,13 @@ export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_
  */
 export interface ValidationQueueRow
 {
-    namespace: string,
-    name: string,
+    id: string,
     date: Date
 }
 export const ValidationQueueMeta = BuildTableMeta<ValidationQueueRow>("guard_validation_queue", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('namespace')
-        .key('name')
+        .key('id')
         .field('date')
         ;
 })
@@ -91,16 +97,14 @@ export const ValidationQueueMeta = BuildTableMeta<ValidationQueueRow>("guard_val
  */
 export interface ValidationHistoryRow
 {
-    namespace: string,
-    name: string,
+    id: string,
     date: Date,
     state: ValidationState
 }
 export const ValidationHistoryMeta = BuildTableMeta<ValidationHistoryRow>("guard_validation_history", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('namespace')
-        .key('name')
+        .key('id')
         .field('date')
         .field('state')
         ;
@@ -114,14 +118,14 @@ export enum ValidationState {
     pending = 'pending',
     scheduling = 'scheduling',
     running = 'running',
+    failed = 'failed',
     completed = 'completed',
 }
 
 
 export interface ValidationStateRow
 {
-    namespace: string,
-    name: string,
+    id: string,
 
     date: Date,
     state: ValidationState,
@@ -134,8 +138,7 @@ export interface ValidationStateRow
 export const ValidationStateMeta = BuildTableMeta<ValidationStateRow>("guard_validation_states", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('namespace')
-        .key('name')
+        .key('id')
         .field('date')
         .field('state')
         .field('success')

@@ -1,4 +1,5 @@
 import { DataStore, BuildTableMeta, DataStoreTableAccessor } from '@kubevious/easy-data-store';
+import { ValidationStateSummary, ValidationIssues } from '@kubevious/ui-middleware/dist/entities/guard';
 
 const DB_NAME = process.env.MYSQL_DB;
 
@@ -117,27 +118,6 @@ export enum ValidationState {
 }
 
 
-export interface ValidationStateSummary
-{
-    issues: {
-        raised: ValidationStateAlerts,
-        cleared: ValidationStateAlerts,
-    }
-}
-
-export interface ValidationStateAlerts
-{
-    errors: number,
-    warnings: number,
-}
-
-export interface ValidationStateIssue
-{
-    dn: string,
-    msg: string,
-    severity: string,
-}
-
 export interface ValidationStateRow
 {
     namespace: string,
@@ -148,7 +128,8 @@ export interface ValidationStateRow
     success?: boolean,
 
     summary?: ValidationStateSummary,
-    issues?: ValidationStateIssue[],
+    newIssues?: ValidationIssues,
+    clearedIssues?: ValidationIssues,
 }
 export const ValidationStateMeta = BuildTableMeta<ValidationStateRow>("guard_validation_states", meta => {
     meta
@@ -159,7 +140,8 @@ export const ValidationStateMeta = BuildTableMeta<ValidationStateRow>("guard_val
         .field('state')
         .field('success')
         .field('summary')
-        .field('issues')
+        .field('newIssues')
+        .field('clearedIssues')
         ;
 })
 

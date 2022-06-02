@@ -105,8 +105,8 @@ export const ValidationHistoryMeta = BuildTableMeta<ValidationHistoryRow>("guard
     meta
         .driverParams({ database: DB_NAME })
         .key('id')
-        .field('date')
-        .field('state')
+        .key('date')
+        .key('state')
         ;
 })
 

@@ -53,7 +53,7 @@ export interface ChangePackageSource
 
 export interface ChangePackageRow
 {
-    id: string,
+    change_id: string,
     date: Date,
     source: ChangePackageSource,
     summary: ChangePackageSummary,
@@ -64,7 +64,7 @@ export interface ChangePackageRow
 export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_packages", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('id')
+        .key('change_id')
         .field('date')
         .field('source')
         .field('summary')
@@ -80,13 +80,13 @@ export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_
  */
 export interface ValidationQueueRow
 {
-    id: string,
+    change_id: string,
     date: Date
 }
 export const ValidationQueueMeta = BuildTableMeta<ValidationQueueRow>("guard_validation_queue", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('id')
+        .key('change_id')
         .field('date')
         ;
 })
@@ -97,16 +97,16 @@ export const ValidationQueueMeta = BuildTableMeta<ValidationQueueRow>("guard_val
  */
 export interface ValidationHistoryRow
 {
-    id: string,
+    change_id: string,
     date: Date,
     state: ValidationState
 }
 export const ValidationHistoryMeta = BuildTableMeta<ValidationHistoryRow>("guard_validation_history", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('id')
-        .key('date')
-        .key('state')
+        .key('change_id')
+        .field('date')
+        .field('state')
         ;
 })
 
@@ -125,7 +125,7 @@ export enum ValidationState {
 
 export interface ValidationStateRow
 {
-    id: string,
+    change_id: string,
 
     date: Date,
     state: ValidationState,
@@ -138,7 +138,7 @@ export interface ValidationStateRow
 export const ValidationStateMeta = BuildTableMeta<ValidationStateRow>("guard_validation_states", meta => {
     meta
         .driverParams({ database: DB_NAME })
-        .key('id')
+        .key('change_id')
         .field('date')
         .field('state')
         .field('success')

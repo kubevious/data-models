@@ -1,17 +1,14 @@
 import { DataStore, BuildTableMeta, DataStoreTableAccessor } from '@kubevious/easy-data-store';
-import { ValidationStateSummary, ValidationIssues, ChangePackageChart, ChangePackageDeletion, ValidationState } from '@kubevious/ui-middleware/dist/entities/guard';
+import { ValidationStateSummary,
+         ValidationIssues,
+         ChangePackageChart,
+         ChangePackageDeletion,
+         ValidationState,
+         ChangePackageSummary } from '@kubevious/ui-middleware/dist/entities/guard';
 import { KubernetesObject } from '@kubevious/ui-middleware';
 
 
 const DB_NAME = process.env.MYSQL_DB;
-
-export interface ChangePackageSummary
-{
-    createdCount: number,
-    deletedCount: number,
-}
-
-
 
 /*
  *

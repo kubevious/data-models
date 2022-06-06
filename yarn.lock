@@ -64,10 +64,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@kubevious/easy-data-store@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@kubevious/easy-data-store/-/easy-data-store-1.0.11.tgz#e85853ee850893a70532f7ae849a1b0b48e8b7d3"
-  integrity sha512-0GOosqTWl/bBGc54iwXFZYvBY+gysfIIRvmFm1Jl0Pn6/6dEBK9COohxF2+jUEiQlQMkx+I2U3UZZ9yAN1PzYQ==
+"@kubevious/easy-data-store@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@kubevious/easy-data-store/-/easy-data-store-1.0.12.tgz#eb63275416d128764f3db03c4076c666ea33d7c2"
+  integrity sha512-qhydcSfFb5NkW6T8ECPaSo9+OZg1CM9YWiAqKjAapAIOZU4m5uqjUz14tUrXUWoEmDIEadfTUc+9TIr/GVARCQ==
   dependencies:
     "@kubevious/helper-cache" "^1.0.4"
     "@kubevious/helper-mysql" "^1.0.11"
@@ -129,10 +129,10 @@
     the-promise "^2.0.12"
     uuid "^8.3.2"
 
-"@kubevious/ui-middleware@^1.0.67":
-  version "1.0.67"
-  resolved "https://registry.yarnpkg.com/@kubevious/ui-middleware/-/ui-middleware-1.0.67.tgz#66075e2106a31e352f92e29e0aeeda51531b6c5f"
-  integrity sha512-2YyJhEkZhbPOcdKK2iclmMqU50XVgH4h1rxGRM62GR7JS0GGCYn2Lv86Wl5kmgVi2vepB1AG5pWSpkos0NToXg==
+"@kubevious/ui-middleware@^1.0.69":
+  version "1.0.69"
+  resolved "https://registry.yarnpkg.com/@kubevious/ui-middleware/-/ui-middleware-1.0.69.tgz#bd6cb2c0c8855972fad57b8659c0908fda3be5c6"
+  integrity sha512-Dm/MfTAU3ev5fzYAd/raTdhwugMo4MESTv0s//O5QHHOyEs2kgM0GQf1owxePzIdLbRqrIwwZRNxqVE1P3YgTA==
   dependencies:
     "@kubevious/entity-meta" "^1.0.69"
     "@kubevious/http-client" "^1.0.19"

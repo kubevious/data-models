@@ -1,5 +1,5 @@
 import { DataStore, BuildTableMeta, DataStoreTableAccessor } from '@kubevious/easy-data-store';
-import { ValidationStateSummary, ValidationIssues, ChangePackageChart, ChangePackageDeletion } from '@kubevious/ui-middleware/dist/entities/guard';
+import { ValidationStateSummary, ValidationIssues, ChangePackageChart, ChangePackageDeletion, ValidationState } from '@kubevious/ui-middleware/dist/entities/guard';
 import { KubernetesObject } from '@kubevious/ui-middleware';
 
 
@@ -87,14 +87,6 @@ export const ValidationHistoryMeta = BuildTableMeta<ValidationHistoryRow>("guard
 /*
  *
  */
-export enum ValidationState {
-    pending = 'pending',
-    scheduling = 'scheduling',
-    running = 'running',
-    failed = 'failed',
-    completed = 'completed',
-}
-
 
 export interface ValidationStateRow
 {

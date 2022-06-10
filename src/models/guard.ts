@@ -23,6 +23,7 @@ export interface ChangePackageSource
 
 export interface ChangePackageRow
 {
+    id: number,
     change_id: string,
     date: Date,
     source: ChangePackageSource,
@@ -34,6 +35,8 @@ export interface ChangePackageRow
 export const ChangePackageMeta = BuildTableMeta<ChangePackageRow>("guard_change_packages", meta => {
     meta
         .driverParams({ database: DB_NAME })
+        .key('id')
+            .autogenerateable()
         .key('change_id')
         .field('date')
         .field('source')

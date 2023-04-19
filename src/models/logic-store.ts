@@ -9,6 +9,7 @@ export interface LogicItemDataRow
 {
     dn: string,
     key: string,
+    latest_part: number,
     value: any,
 }
 export const LogicItemDataMeta = BuildTableMeta<LogicItemDataRow>("logic_item_data", meta => {
@@ -16,6 +17,7 @@ export const LogicItemDataMeta = BuildTableMeta<LogicItemDataRow>("logic_item_da
         .driverParams({ database: DB_NAME })
         .key('id')
             .autogenerateable()
+        .field('latest_part')
         .field('dn')
         .field('key')
         .field('value')

@@ -1,5 +1,4 @@
 import _ from 'the-lodash';
-import { Promise } from 'the-promise';
 import { ILogger } from 'the-logger';
 
 import { BufferUtils } from '../utils/buffer-utils';
@@ -10,6 +9,7 @@ import { ExecutionLimiter, ExecutionLimiterItem } from '@kubevious/helper-backen
 
 import { PaginationTokenData, PaginationUtils } from '../utils/pagination-utils';
 import { PartitionUtils } from '../utils/partition-utils';
+import { MyPromise } from 'the-promise';
 
 export class NodeHistoryReader
 {
@@ -244,7 +244,7 @@ export class NodeHistoryReader
     {
         this._logger.verbose("[_querySnapshots] count: %s", _.values(this._pendingSnapshotDetails).length);
 
-        return Promise.execute(_.values(this._pendingSnapshotDetails), x => this._queryShapshot(x))
+        return MyPromise.execute(_.values(this._pendingSnapshotDetails), x => this._queryShapshot(x))
     }
 
     private _queryShapshot(snapshot: SnapshotDetails)
@@ -269,7 +269,7 @@ export class NodeHistoryReader
     {
         this._logger.verbose("[_queryConfigHashes] count: %s", _.values(this._pendingConfigHashes).length);
 
-        return Promise.execute(_.values(this._pendingConfigHashes), x => this._queryDetails(x))
+        return MyPromise.execute(_.values(this._pendingConfigHashes), x => this._queryDetails(x))
     }
 
     private _queryDetails(details: ConfigHashDetails)

@@ -1,10 +1,10 @@
 import _ from 'the-lodash';
-import { Promise } from 'the-promise';
 import { ILogger } from "the-logger";
 import { ITableAccessor } from "@kubevious/easy-data-store";
 import { FilterOptions } from '@kubevious/easy-data-store/dist/driver';
 import { SnapItemsRow, SnapshotsAccessors, SnapshotsRow } from '../models/snapshots';
 import { UuidUtils } from '../';
+import { MyPromise } from 'the-promise';
 
 interface SnapshotScopeFilter
 {
@@ -22,7 +22,7 @@ export class SnapshotReader
 
     private _snapshotRow? : Partial<SnapshotsRow> | null = null;
 
-    private _isDiffSnapshot : boolean = false;
+    private _isDiffSnapshot = false;
     private _baseSnapshotScope?: SnapshotScopeFilter;
     private _diffSnapshotScope?: SnapshotScopeFilter;
 
@@ -97,7 +97,7 @@ export class SnapshotReader
                 })
                 .then(hashes => {
                     const alerts : any[] = [];
-                    return Promise.serial(hashes, x => {
+                    return MyPromise.serial(hashes, x => {
                         return this._queryConfigData(x.hash)
                             .then(config => {
                                 for(const alert of config)
@@ -135,7 +135,7 @@ export class SnapshotReader
                 return this._querySnapConfigHash(filter, {})
                     .then(hashes => {
                         // this._logger.info("[_queryConfig] RESULT: ", hashes);
-                        return Promise.serial(hashes, x => this._queryConfigData(x.hash))
+                        return MyPromise.serial(hashes, x => this._queryConfigData(x.hash))
                             .then(values => values.map(x => x));
                     })
             })

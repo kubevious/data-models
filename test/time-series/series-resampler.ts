@@ -4,6 +4,14 @@ import should = require('should');
 import _ from 'the-lodash';
 
 import { SeriesResampler } from '../../src';
+import { TimeSeriesPoint } from '../../src/time-series/series-resampler';
+
+export interface MyTimeSeriesPoint extends TimeSeriesPoint
+{
+    changes: number,
+    error: number,
+    warn: number,
+}
 
 describe('series-resampler', function() {
 
@@ -23,8 +31,8 @@ describe('series-resampler', function() {
 
 
     it('test-two', function() {
-        const resampler = new SeriesResampler(10);
-        const importData : Point[] = [
+        const resampler = new SeriesResampler<MyTimeSeriesPoint>(10);
+        const importData : MyTimeSeriesPoint[] = [
             {"date": new Date("2020-10-07 22:08:50"), "changes":7, "error":42, "warn":368},
             {"date": new Date("2020-10-20 23:24:32"), "changes":7, "error":54, "warn":367},
         ];
@@ -34,12 +42,12 @@ describe('series-resampler', function() {
     });
 
     it('test-case-01', function() {
-        const resampler = new SeriesResampler(10)
+        const resampler = new SeriesResampler<MyTimeSeriesPoint>(10)
             .column("changes", x => _.max(x) ?? 0)
             .column("error", _.mean)
             ;
 
-        const importData : Point[] = [
+        const importData : MyTimeSeriesPoint[] = [
             {"date":new Date("2020-10-08T05:08:50.000Z"), "changes":7, "error":42, "warn":368},
             {"date":new Date("2020-10-14T14:09:51.000Z"), "changes":6, "error":54, "warn":370},
             {"date":new Date("2020-10-21T06:24:32.000Z"), "changes":7, "error":54, "warn":367},
@@ -62,12 +70,3 @@ describe('series-resampler', function() {
 
 
 });
-
-
-export interface Point
-{
-    date: Date;
-    changes: number;
-    error: number;
-    warn: number;
-}

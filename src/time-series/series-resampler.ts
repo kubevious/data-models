@@ -23,7 +23,7 @@ export class SeriesResampler<T extends TimeSeriesPoint = TimeSeriesPoint>
         return this;
     }
 
-    process(data: T[])
+    process(data: T[]) : T[]
     {
         if (data.length <= 2) {
             return data;
@@ -67,7 +67,7 @@ export class SeriesResampler<T extends TimeSeriesPoint = TimeSeriesPoint>
             buckets[bucketId].points.push(point);
         }
     
-        const resampled = [];
+        const resampled : T[] = [];
         let lastPoint : (Record<string, any> | null) = null;
         for(let i = 0; i < buckets.length; i++)
         {
@@ -100,7 +100,7 @@ export class SeriesResampler<T extends TimeSeriesPoint = TimeSeriesPoint>
     
             lastPoint = point;
     
-            resampled.push(point);
+            resampled.push(point as T);
         }
     
         return resampled;
